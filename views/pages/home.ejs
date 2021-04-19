@@ -1,0 +1,88 @@
+<%- include('../partials/header.ejs'); -%>
+        <!-- Header End Here -->
+
+        <!-- How to work section start here -->
+        <div class="hwork">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="main_hwork">
+                            <ul>
+                                <li class="order">
+                                    <div class="title"><img src="/fast_food/images/h_img1.png" alt></div>
+                                </li>
+                                <li class="deliver_L">
+                                    <div class="title"><img src="/fast_food/images/h_img2.png" alt="Delivery location"></div>
+                                </li>
+                                <li class="deliver_pick">
+                                    <div class="title"> <img src="/fast_food/images/h_img3.png" alt=" Delivery or Pick up "> </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- How to work section start here -->
+
+        <!-- popular our food start here -->
+        <section>
+            <div class="popular">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main_popular">
+                                <h2 class="title">Món ăn ưa chuộng</h2>
+                                <p class="desc">Choose from over 30 craveable toppings to make your perfect Food.
+                                    <br> Don’t love what you ordered? Let us know. We’re all about second chances.</p>
+                                <div class="p_card">
+                                    <div class="row">
+                                        <% if (listProduct && listProduct.length) { %>
+                                         <% listProduct.forEach(product => { %>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <ul>
+
+                                                    <li>
+                                                        <div class="card">
+                                                            <div class="C_img"> <img src="/fast_food/images/pro_img1.jpg" class="absoImg" alt> </div>
+                                                            <div class="C_desc">
+                                                                <h3 class="title"><%=product.name%></h3>
+                                                                <p class="desc"><%= product.description ? product.description : "Pizza ngon" %></p>
+                                                                <div class="price_block">
+                                                                    <div class="price"><%=currencyFormatter.format(product.price, { code: 'VND' });%></div>
+                                                                    <a href="#" class="card_btn" _productID=<%=product._id%> >Add to cart</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                         <% }) %>
+                                        <% } %>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- popular our food start here -->
+
+        <!-- client feedback start here -->
+        <section>
+            <div class="client_say">
+                
+            </div>
+        </section>
+        <!-- client feedback end here -->
+
+        <!-- Map Start here -->
+        <div class="map">
+            <iframe src="https://maps.google.com/maps?hl=en&amp;q=new%20maxico%20city+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=6&amp;iwloc=B&amp;output=embed"></iframe>
+        </div>
+        <!-- Map End here -->
+
+        <!-- Footer Section here -->
+<%- include('../partials/footer.ejs'); -%>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/fast_food/images/favicon.ico" type="image/x-icon">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content name="description">
+    <meta content name="keywords">
+    <title>Login | Order Online Fast Food & Pizza</title>
+    <!-- Fonts Here-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i,800" rel="stylesheet">
+    <!-- Fonts here-->
+
+    <!-- Style Here -->
+    <link rel="stylesheet" href="/fast_food/css/slick.css">
+    <link rel="stylesheet" href="/fast_food/css/style.css">
+    <link rel="stylesheet" href="/fast_food/css/font-awesome.min.css">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/fast_food/css/bootstrap.min.css">
+
+    <!-- JS -->
+    <script src="js/popper.min.js" defer></script>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/bootstrap.min.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header Start Here -->
+        <header id="Header">
+            <div class="main_header inner_page">
+                <div class="top_nav" id="navbar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="logo">
+                                    <a href="/" class="trans hvr-underline-from-left" a><img src="/fast_food/images/logoxt.png" alt="Crave Ordering"></a>
+                                </div>
+                                <div class="nav_manu">
+                                    <div class="Menu_list">
+                                        <ul class="menu">
+                                            <li><a href="/" class="trans hvr-underline-from-left">Trang Chủ</a></li>
+                                            <li><a href="/about" class="trans">Thông Tin</a></li>
+                                            <li><a href="/order" class="trans">Đặt Hàng</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="Cart">
+                                        <a href="/cart" title="Cart">
+                                            <span class="Cart_count">Cart : (0) $00.00</span>
+                                            <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i> -->
+                                            <img class="cart_img" src="/fast_food/images/cart_1.png" alt="cart_1">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="burger" class="open-main-nav">
+                    <span class="burger"></span>
+                </button>
+                <div class="H_banner home">
+                    <div class="main_pitch">
+                        <h1 class="page_title">ĐẶT ĐỒ ĂN TRỰC TUYẾN</h1>
+                        <h3 class="cntct">Gọi ngay<span class="call_desk"><a href="tel:+01234567890" id="typewriter_num"></a></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="device">
+                <nav class="main-nav" id="main-nav">
+                    <div class="logo">
+                        <a href title="Crave Ordering"><img src="/fast_food/images/logoBlack.png" alt="Crave Ordering"></a>
+                    </div>
+                    <ul>
+                        <li><a href>Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/order">Order</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="breadcum">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="main_breadcum">
+                            <ul>
+                                <li><a href="/" class="trans" title="Home">Home</a></li>
+                                <li>Đăng nhập/Đăng ký</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<section id="login">
+    <div class="login_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main_login">
+                        <div class="login_left col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login_box">
+                                <h2 class="title">Sign in</h2>
+                                <form id="loginform">
+                                    <div class="login_form">
+                                        <ul>
+                                            <li>
+                                                <label for="EmailAddress">Email</label>
+                                                <input class="form-control" id="EmailAddress" name="emailaddress" title="Email Address" type="email">
+                                            </li>
+                                            <li>
+                                                <label for="Password">Password</label>
+                                                <input class="form-control" title="Password" id="Password" name="password" type="password">
+                                            </li>
+                                            <li class="half checkbox">
+                                                <input id="check4" type="checkbox" name="check" value="Bike">
+                                                <label for="check4">Remember Me</label>
+                                            </li>
+                                            <li class="half text-right">
+                                                <a href="#" class="trans">Forgotten Password ?</a>
+                                            </li>
+                                            <li>
+                                                <button type="" class="loginbutton red_btn trans squre-btn hvr-ripple-out" id="btnLogin" >Login</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="signup_right col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login_box">
+                                <h2 class="title">Create New Account</h2>
+                                <h4 class="create_ac">Create your Account</h4>
+                                <form id="registrationform">
+                                    <ul>
+                                        <li>
+                                            <label for="EmailAddress">Email</label>
+                                            <input class="form-control txtEmail" type="text">
+                                        </li>
+                                        <li>
+                                            <label for="EmailAddress">Full name</label>
+                                            <input class="form-control txtName" type="text">
+                                        </li>
+                                        <li>
+                                            <label for="EmailAddress">Password</label>
+                                            <input class="form-control txtPwd" type="password">
+                                        </li>
+                                        <li>
+                                            <button type="" class="register-btn red_btn trans squre-btn hvr-ripple-out btnRegister" name="Register">Register</button>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <h4 class="title_checklist">Sign up today and you will be able to :</h4>
+                                <ul class="checklist">
+                                    <li class="checkbox">
+                                        <input id="check1" type="checkbox" name="check" value="Bike">
+                                        <label for="check1">Speed your way through the checkout</label>
+                                    </li>
+                                    <li class="checkbox">
+                                        <input id="check2" type="checkbox" name="check" value="Bike">
+                                        <label for="check2">Track your orders easily</label>
+                                    </li>
+                                    <li class="checkbox">
+                                        <input id="check3" type="checkbox" name="check" value="Bike">
+                                        <label for="check3">Keep a record of all your purchases</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="quick_order">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('../partials/footer.ejs') -%>
+<%- include ('./utils/login-script.ejs') %>
+<%- include ('./utils/add_category-script.ejs') %>
+

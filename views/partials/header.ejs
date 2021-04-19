@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/fast_food/images/favicon.ico" type="image/x-icon">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content name="description">
+    <meta content name="keywords">
+    <title> Đặt đồ ăn nhanh trực tuyến</title>
+    <!-- Fonts Here-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <!-- Fonts here-->
+
+    <!-- Style Here -->
+    <link rel="stylesheet" href="/fast_food/css/slick.css">
+    <link rel="stylesheet" href="/fast_food/css/style.css">
+    <link rel="stylesheet" href="/fast_food/css/my-account.css">
+    <link rel="stylesheet" href="/fast_food/css/font-awesome.min.css">
+    <link href="/helper/toastr.min.css"/>
+
+        
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="/fast_food/css/bootstrap.min.css">
+
+    <!-- JS -->
+    <script src="/fast_food/js/popper.min.js" defer></script>
+    <script src="/fast_food/js/jquery.min.js" defer></script>
+    <script src="/fast_food/js/bootstrap.min.js" defer></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header Start Here -->
+        <header id="Header">
+            <div class="main_header">
+                <div class="top_nav" id="navbar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="logo">
+                                    <a href="/" class="trans hvr-underline-from-left" a><img src="/fast_food/images/logoxt.png" alt="Crave Ordering"></a>
+                                </div>
+                                <div class="nav_manu">
+                                    <div class="Menu_list">
+                                        <ul class="menu">
+                                            <li><a href="/" class="trans hvr-underline-from-left">Trang Chủ</a></li>
+                                            <li><a href="/about" class="trans">Thông Tin</a></li>
+                                            <li><a href="/order" class="trans">Đặt Hàng</a></li>
+                                            <% if (!infoUser) { %>
+                                                <li><a href="/dang-nhap" class="trans">Đăng nhập/ Đăng ký</a></li>
+                                            <% }else{ %>
+                                                <li><a href="" class="trans">Chào <%=infoUser.fullname%></a></li>
+                                                <li><a href="/dang-xuat" class="trans">Đăng Xuất</a></li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                    <div class="Cart">
+                                        <a href="/cart" title="Cart">
+                                            <span class="Cart_count">Cart : (0) $00.00</span>
+                                            <!-- <i class="fa fa-shopping-cart" aria-hidden="true"></i> -->
+                                            <img class="cart_img" src="/fast_food/images/cart_1.png" alt="cart_1">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="burger" class="open-main-nav">
+                    <span class="burger"></span>
+                </button>
+                <div class="H_banner home">
+                    <div class="main_pitch">
+                        <h1 class="page_title">ĐẶT ĐỒ ĂN TRỰC TUYẾN</h1>
+                        <h3 class="cntct">Gọi ngay<span class="call_desk"><a href="tel:+01234567890" id="typewriter_num"></a></span></h3>
+                    </div>
+                </div>
+                <div class="bottom_pitch">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="main_bpitch">
+                                    <ul>
+                                        <% if (listCategory && listCategory.length) { %>
+                                            <% listCategory.forEach(category => { %>
+                                            <li class="pizza"><a href="/menu?categoryID=<%=category._id%>" class="trans" title="Pizza"><span class="icon"><%=category.name%></span></a></li>
+                                            <!--
+                                            <li class="burger1"><a href="/menu" class="trans" title="Burgers"><span class="icon">Burgers</span></a></li>
+                                            <li class="salads"><a href="/menu" class="trans" title="Salads"><span class="icon">Salads</span></a></li>
+                                            <li class="fries"><a href="/menu" class="trans" title="Fries"><span class="icon">Fries</span></a></li>
+                                            <li class="drinks"><a href="/menu" class="trans" title="Drinks"><span class="icon">Drinks</span></a></li>
+                                            -->
+                                            <% }) %>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="device">
+                <nav class="main-nav" id="main-nav">
+                    <div class="logo">
+                        <a href title="Crave Ordering"><img src="/fast_food/images/logoBlack.png" alt="Crave Ordering"></a>
+                    </div>
+                    <ul>
+                        <li><a href>Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/order">Order</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="login.html">Register</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>

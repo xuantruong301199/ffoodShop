@@ -1,0 +1,95 @@
+<script>
+
+    let STATUS_CATEGORY = [
+    { text: 'Không hoạt động', value: 0 },
+    { text: 'Đang hoạt động', value: 1 },
+    ]
+
+    //Them san pham
+    $(document).on('click', '.btnAddCategory', function(e) {
+        e.preventDefault();
+        let name = $('.txtNameCategory').val();
+
+        console.log({ name });
+        //Insert category parent
+        $.ajax({
+            url: `/category/add`,
+            method: 'POST',
+            data: { name },
+            success: resp => {
+                if(!resp.error){
+                    toastr['success']('Thêm thành công', 'Thông báo');
+                    location.reload();
+                }else{
+                    return toastr['error']('Thêm thất bại', 'Thông báo');
+                }
+            },
+            error: err => console.log({ err })
+        });
+    })
+
+    //Xoa san pham
+    $(document).on('click', '.btnRemove', function(e) {
+        e.preventDefault();
+        let categoryID = $(this).attr('_categoryID');
+
+        $.ajax({
+            url: `/category/remove`,
+            method: 'POST',
+            data: { categoryID },
+            success: resp => {
+                if(!resp.error){
+                    location.reload();
+                }else{
+                    return toastr['error']('Xoa thất bại', 'Thông báo');
+                }
+            },
+            error: err => console.log({ err })
+        });
+    })
+
+
+    $(document).on('click', '.btnOpenCategoryChild', function(e) {
+        e.preventDefault();
+        let categoryID = $(this).attr('id');
+        let _isOpen = $(this).attr('_isOpen');
+        $.ajax({
+                url: `/categories/list-category-child?categoryID=${categoryID}`,
+                method: 'GET',
+                success: resp => {
+                    let listCategoryChild = resp.data;
+                    let listDataAppend = ``;
+                    if(!resp.error){
+                        if(listCategoryChild && listCategoryChild.length){
+                            listCategoryChild.forEach((category, index) => {
+                                listDataAppend += `
+                                <tr class="table-light parentIs_${categoryID}">
+                                    <th scope="row"></th>
+                                    <td>#${String(category._id).slice(-6)}</td>
+                                    <td>${category.name}</td>
+                                    <td>${category.slug}</td>
+                                    <td>${STATUS_CATEGORY[category.status].text}</td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="px-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="uil uil-pen font-size-18"></i></a>
+                                        <a href="javascript:void(0);" class="px-3 text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="uil uil-trash font-size-18"></i></a>
+                                    </td>
+                                </tr>`
+                            })
+                        }
+                    }
+                    //Mở
+                    if(_isOpen.toString() == '0'){
+                        $(`#${categoryID}`).after(listDataAppend)
+                        $(`#${categoryID}`).attr('_isOpen', '1')
+                    }
+                    //Đóng
+                    if(_isOpen.toString() == '1'){
+                        $(`.parentIs_${categoryID}`).empty();
+                        $(`#${categoryID}`).attr('_isOpen', '0')
+                    }
+                },
+                error: err => console.log({ err })
+            });
+        
+    })
+</script>

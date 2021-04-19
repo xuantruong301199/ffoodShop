@@ -1,0 +1,48 @@
+<script>
+    
+    //Dang ky
+    $(document).on('click', '.btnRegister', function(e) {
+        e.preventDefault();
+        let email = $('.txtEmail').val();
+        let password = $('.txtPwd').val();
+        let fullname = $('.txtName').val();
+        console.log({ email, password, fullname })
+        $.ajax({
+            url: `/user/dang-ky`,
+            method: 'POST',
+            data: { email, password, fullname },
+            success: resp => {
+                console.log(resp)
+                if(!resp.error){
+                    alert("Dang ky thanh cong")
+                }else{
+                    alert("Dang ky that bai")
+                }
+            },
+            error: err => console.log({ err })
+        });
+    });
+
+    //Dang nhap
+    $(document).on('click', '#btnLogin', function(e) {
+        e.preventDefault();
+        let email = $('#EmailAddress').val();
+        let password = $('#Password').val();
+
+        $.ajax({
+            url: `/user/dang-nhap`,
+            method: 'POST',
+            data: { email, password },
+            success: resp => {
+                console.log(resp)
+                if(!resp.error){
+                    location.href = '/'
+                }else{
+                    alert("Dang nhap that bai")
+                }
+            },
+            error: err => console.log({ err })
+        });
+    });
+
+</script>

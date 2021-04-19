@@ -1,0 +1,75 @@
+<script>
+    
+    //Hàm convert thành tiền VNĐ
+    var cleave = new Cleave('#price', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+    
+    function change_alias(alias) {
+        var str = alias;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
+        str = str.replace(/ + /g, " ");
+        str = str.trim();
+        return str;
+    }
+
+    //Hàm convert name sang slug
+    function convertSlug(plainText) {
+        const text_converted_alias = change_alias(plainText);
+        const text_split_with_space = text_converted_alias.split(' ');
+        const text_joined = text_split_with_space.join('-');
+        return text_joined;
+    }
+
+    $("#nameProduct").keyup(function(){
+        let name = $(this).val();
+        console.log(name);
+        $('#slugProduct').val(convertSlug(name))
+    });
+
+    $('#file').hide();
+
+    $('.capture').on('click', function(e){
+        e.preventDefault();
+        $('#file')[0].click();
+    });
+
+    $(document).on("click", "#insertProduct", function(e){
+        e.preventDefault();
+
+        let name           = $("#nameProduct").val();
+        let price          = $("#price").val();
+        let description    = $("#description").val();
+        let categoryID     = $("#categoryParent").val();
+        // price               = price.replaceAll(",", "");
+        // price               = Number(price);
+        
+        if (!name){
+            toastr.warning('Mời bạn nhập tên của sản phẩm', 'Cảnh Báo');
+        }
+
+        $.ajax({
+            url: "/product/add-product",
+            method: "POST",
+            data: { name, price, description, categoryID },
+            success: resp => {
+                console.log(resp);
+                if(!resp.error){
+                    toastr.success('Bạn thêm thành công', 'Thành Công');
+                }else{
+                    toastr.warning('Bạn không thể thêm sản phẩm', 'Cảnh Báo');
+                }
+            }
+        })
+    })
+
+</script>
